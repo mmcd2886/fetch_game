@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://squirrel_sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Path2D.gd" type="Script" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+
+
+func _on_VisibilityNotifier2D2_screen_exited():
+	print(\"yes\")
+	queue_free()
+"
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 224, 144, 0, 0, 0, 0, 388.262, 3484.8, 0, 0, 0, 0, 586.557, 1582.4 )
+}
+
+[node name="Node2D" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 45.3757, 119.172 )
+scale = Vector2( 0.645503, 0.172414 )
+curve = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 128, 0 )
+rotation = 0.982794
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="Path2D/PathFollow2D" instance=ExtResource( 1 )]
+position = Vector2( 6.91187, -2.21882 )
+
+[node name="VisibilityNotifier2D2" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]

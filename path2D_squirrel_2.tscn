@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://squirrel_sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://path2D_squirrel_2.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1065.5, 96.749, 0, 0, 0, 0, 958.851, 59.7157, 0, 0, 0, 0, 868.86, 241.574, 0, 0, 0, 0, 1057.8, 378.946, 0, 0, 0, 0, 885.563, 559.874, 0, 0, 0, 0, 911.269, 846.026, 0, 0, 0, 0, 627.449, 565.292, 0, 0, 0, 0, 482.264, 481.367, 0, 0, 0, 0, 502.176, 300.111, 0, 0, 0, 0, 376.069, 229.137, 0, 0, 0, 0, 371.328, 332.868, 0, 0, 0, 0, 127.649, 603.661, 0, 0, 0, 0, 39.4689, 819.859, 0, 0, 0, 0, 48.0024, 552.341, 0, 0, 0, 0, 249.392, 346.367, 0, 0, 0, 0, 147.163, 210.382, 0, 0, 0, 0, -296.878, 194.782, 0, 0, 0, 0, 96.1695, -76.3791, 0, 0, 0, 0, 289.407, 77.1431, 0, 0, 0, 0, 206.916, -81.1835, 0, 0, 0, 0, 414.301, -81.5031, 0, 0, 0, 0, 440.006, -318.319, 0, 0, 0, 0, 618.048, 20.2685, 0, 0, 0, 0, 378.155, -352.195, 0, 0, 0, 0, 697.058, 76.3743, 0, 0, 0, 0, 1176.89, -347.921 )
+}
+
+[node name="Path2D" type="Path2D"]
+position = Vector2( 29.1833, 89.1938 )
+scale = Vector2( 0.933662, 0.810756 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 1065.5, 96.749 )
+rotation = -2.80738
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D" instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.9, 0.9 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="."]
+position = Vector2( 817.476, 753.253 )
+rotation = -2.36161
+offset = 1210.46
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D2" instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.9, 0.9 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="."]
+position = Vector2( 522.34, -161.743 )
+rotation = 1.08669
+offset = 5344.63
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D3" instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.78, 0.78 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="."]
+position = Vector2( -63.833, 34.0057 )
+rotation = -0.603912
+offset = 4116.58
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D4" instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 8
+collision_mask = 8
+[connection signal="hit" from="PathFollow2D/Area2D" to="." method="_on_Area2D_hit"]
+[connection signal="hit" from="PathFollow2D2/Area2D" to="." method="_on_Area2D_hit"]
+[connection signal="hit" from="PathFollow2D3/Area2D" to="." method="_on_Area2D_hit"]
+[connection signal="hit" from="PathFollow2D4/Area2D" to="." method="_on_Area2D_hit"]

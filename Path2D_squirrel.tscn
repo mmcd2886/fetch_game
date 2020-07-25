@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://squirrel_sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Path2D_squirrel.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 348.903, -114.225, 0, 0, 0, 0, 136.157, 207.682, 0, 0, 0, 0, 306.045, 301.543, 0, 0, 0, 0, 434.001, 581.508, 0, 0, 0, 0, -89.7508, 921.924, 0, 0, 0, 0, 527.609, 820.342, 0, 0, 0, 0, 544, 456, 0, 0, 0, 0, 432, 344, 0, 0, 0, 0, 600, 192, 0, 0, 0, 0, 416, 40, 0, 0, 0, 0, 582.525, -230.709, 0, 0, 0, 0, 689.295, 124.609, 0, 0, 0, 0, 893.531, -20.7682, 0, 0, 0, 0, 757.374, 373.827, 0, 0, 0, 0, 621.217, 321.906, 0, 0, 0, 0, 744, 584, 0, 0, 0, 0, 710.172, 1077.69, 0, 0, 0, 0, 842.133, 879.081, 0, 0, 0, 0, 927.57, 726.886, 0, 0, 0, 0, 1148.83, 591.893, 0, 0, 0, 0, 985.942, 290.052, 0, 0, 0, 0, 1138.49, 180.889, 0, 0, 0, 0, 1053.74, 124.583, 0, 0, 0, 0, 1106.28, 83.0726, 0, 0, 0, 0, 1305.86, -199.557 )
+}
+
+[node name="Path2D" type="Path2D"]
+position = Vector2( -145.543, 9.0155 )
+scale = Vector2( 0.940091, 0.77041 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="."]
+position = Vector2( 348.903, -114.225 )
+rotation = 2.1548
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D2" instance=ExtResource( 1 )]
+position = Vector2( 4.88763, -6.33325 )
+scale = Vector2( 0.9, 0.9 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="."]
+position = Vector2( 607.148, -148.767 )
+rotation = 1.27883
+offset = 3513.9
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D3" instance=ExtResource( 1 )]
+position = Vector2( 5.31319, -9.98853 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="."]
+position = Vector2( 905.178, 766.775 )
+rotation = -1.05932
+offset = 5749.33
+loop = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" parent="PathFollow2D4" instance=ExtResource( 1 )]
+position = Vector2( 6.10352e-05, 0.00012207 )
+scale = Vector2( 0.85, 0.85 )
+collision_layer = 4
+collision_mask = 4
+[connection signal="hit" from="PathFollow2D2/Area2D" to="." method="_on_Area2D_hit"]
+[connection signal="hit" from="PathFollow2D3/Area2D" to="." method="_on_Area2D_hit"]
+[connection signal="hit" from="PathFollow2D4/Area2D" to="." method="_on_Area2D_hit"]
